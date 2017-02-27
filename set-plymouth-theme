@@ -1,0 +1,10 @@
+#!/bin/zsh
+if [ $# -ne 1 ]; then
+	echo "usage: $0 [--list|<theme>]" >&2
+	exit 1
+fi
+if [ "${1}" = '--list' ]; then
+	sudo /usr/sbin/plymouth-set-default-theme "${1}"
+else
+	sudo /usr/sbin/plymouth-set-default-theme "${1}" --rebuild-initrd
+fi
